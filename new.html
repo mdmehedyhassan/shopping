@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>N Shopping Cart</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="cart">
+                <div class="col-md-12 col-lg-10 mx-auto">
+                    <div class="cart-item">
+                        <div class="row">
+                            <div class="col-md-7 center-item">
+                                <img src="images/product-1.png" alt="">
+                                <h5>iPhone 11 128GB Black</h5>
+                            </div>
+
+                            <div class="col-md-5 center-item">
+                                <div class="input-group number-spinner">
+                                    <button onclick="handlePhoneChange(false);" class="btn btn-default"><i 
+                                            class="fas fa-minus"></i></button> <!-- id="phone-decrease"  এই আইডি টা যদি ব্যবহার করি তাহলে 2স্টেপ এর কমেন্ড প্রথম  কমেন্ট টা ঠিককরতে হবে এবং এখান থেকে েঅন ক্লিক সারাতে হবে -->
+                                    <input id="phone-count" type="text" class="form-control text-center" value="1">
+                                    <button onclick="handlePhoneChange(true);" class="btn btn-default"><i
+                                            class="fas fa-plus"></i></button> <!--  id="phone-increase"   -->
+                                </div>
+                                <h5 id="phone-total">$ 1219</h5>
+                                <img src="images/remove.png" alt="" class="remove-item">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="row">
+                            <div class="col-md-7 center-item mx-auto">
+                                <img src="images/product-2.png" alt="">
+                                <h5>iPhone 11 Silicone Case - Black</h5>
+                            </div>
+                            <div class="col-md-5 center-item">
+                                <div class="input-group number-spinner">
+                                    <button onclick="handleProductChange(false);" class="btn btn-default"><i
+                                            class="fas fa-minus"></i></button>
+                                    <!-- id="case-decrease"  এই আইডি টা যদি ব্যবহার করি তাহলে 2স্টেপ এর কমেন্ড প্রথম  কমেন্ট টা ঠিককরতে হবে এবং এখান থেকে েঅন ক্লিক সারাতে হবে -->
+                                    <input id="case-count" type="text" class="form-control text-center" value="1">
+                                    <button onclick="handleProductChange(true);" class="btn btn-default"><i
+                                            class="fas fa-plus"></i></button> <!--  id="case-increase"   -->
+                                </div>
+                                <h5 id="case-total">$ 59</h5>
+                                <img src="images/remove.png" alt="" class="remove-item">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="row">
+
+                            <div class="col-md-8">
+                                <h5>Subtotal: </h5>
+                                <h5>Tax:</h5>
+                                <h5>Total:</h5>
+                            </div>
+
+                            <div class="col-md-4 status">
+                                <h5>$1,278</h5>
+                                <h5>$0</h5>
+                                <h5>$1,278</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 pt-4 pb-4">
+                        <button type="button" class="btn btn-success check-out">Check Out</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+
+        // // 1st step
+        // document.getElementById("case-increase").addEventListener("click", function () { // আইডি টাকে চিনহিত করা হইছে এবং ক্লিক করলে যে চেন্স গুলা হবে তা নিচে করা হইছে
+        //     const caseInput = document.getElementById("case-count"); // আগরে প্লাস চিহ্ন তে ক্লিক করলে যে  সংখ্যায় কি পরিবর্তন আসবে তা লেখা হলো
+        //     const caseCount = parseInt(caseInput.value); // সংখ্যাটা নাম্বার হয়ে যাবে েএবং দশমিক এলাও থাকবেনা।
+        //     const caseNewCount = caseCount + 1; // এক  বারবে সুধু  
+        //     caseInput.value = caseNewCount; // এটা করলে আগরে টা একেক করে বারতেই থাকবে না হয় বারবেনা
+        //     const caseTotal = caseNewCount * 59; // যে সংখ্যাটা পাওয়া যাবে তার সাথে 59 গুন হবে 
+        //     document.getElementById("case-total").innerText = "$ " + caseTotal; // েঐ আইডিতে আগরে 59এর পরিবর্তে নতুন গুন ফল সংখ্যা টা যোগ হবে
+        // });
+        // document.getElementById("case-decrease").addEventListener("click", function(){
+        //     const caseInput = document.getElementById("case-count");
+        //     const caseCount = parseInt(caseInput.value);
+        //     const caseNewCount = caseCount - 1;
+        //     caseInput.value = caseNewCount;
+        //     const caseTotal = caseNewCount * 59;
+        //     document.getElementById("case-total").innerText = "$ " + caseTotal;
+        // });
+
+
+
+        // 2nd step
+        // document.getElementById("case-increase").addEventListener("click", function () { 
+        //     handleProductChange(true);
+        // });
+        // document.getElementById("case-decrease").addEventListener("click", function(){
+        //     handleProductChange(false);
+        // });  // উপরে থেকে যদি অনক্লিক সারই তাহলে এইটাও লিখতে হবে মানে এখানে আইডি ডিকলার করলে েএটা ব্যবহার হবে আর যদি আইডি ডিকলার না করি তাহলে এইভাবে লিখতে হবে 
+        function handleProductChange(isIncrease) {   // এখানে এই পেরামিটার টা দেওয়ার কারন হলো নিচে দুই রকমের মান আছে তাই আমরা উপরে হেন্ডলারে ট্রু ফল্স লিখে  ইফ এলসে ডিকলার করতে পারবো
+            const caseInput = document.getElementById("case-count"); // েএই আইডির বেলুটা নেওয়া হইছে 
+            const caseCount = parseInt(caseInput.value); // এখানে  আগের আেইডিটার বেলু দশমিকে নেওয়া যাবেনা।
+            let caseNewCount = caseCount;  // এখানে let ব্যবহার করার কারন হলো মান টা চেন্স হতে পারে । মানে একবার যোগরে ও হতে পারে আবার বিয়োগের ও হতে পারে। আবার  এটার মান caseNewCount = caseCount কারন আগরে মান টা পরিবর্তন হয়ে নতুন মান হবে । আগে যদি 1 থাকে এখন + হলো 2  হবে আবর - হলে 0 হবে। তাই নতুন মানটা পুরুনো আইডিতে বসবে ।  
+            if (isIncrease == true) { // যদি হন্ডেলারে ট্রু লেখি তাহলে এই মান টা আসবে 
+                caseNewCount = caseCount + 1;
+            }
+            if (isIncrease == false && caseCount > 0) { //এটার মানে হলো যদি মান মিথ্যা দেই  এবং 0 এর নিচে যাবেনা এমন মান লিখি তাহলে আর এই মান টা আসবে। এবং এক করে কমবে।0 তে গিয়ে আর কমবেনা
+                caseNewCount = caseCount - 1;
+            }
+            caseInput.value = caseNewCount;
+            const caseTotal = caseNewCount * 59;
+            document.getElementById("case-total").innerText = "$ " + caseTotal;
+        }
+
+
+        function handlePhoneChange(inIncrease){
+            const phoneInput = document.getElementById("phone-count");
+            const phoneCount = parseInt(phoneInput.value);
+            let phoneNewCount = phoneCount;
+            if(inIncrease == true){
+                phoneNewCount = phoneCount + 1;
+            }
+            if(inIncrease == false && phoneCount > 0){
+                phoneNewCount = phoneCount -1;
+            }
+            phoneInput.value = phoneNewCount;
+            const phoneTotal = phoneNewCount * 1219;
+            document.getElementById("phone-total").innerText = "$ " + phoneTotal;
+        }
+    </script>
+</body>
+
+</html>
